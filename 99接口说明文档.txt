@@ -1,0 +1,79 @@
+# 接口说明文档
+
+>服务器IP：	115.29.33.236
+>
+>端口：		8080
+
+## 服务器上的文件
+
+	11webUIJob.php
+	14phpClearJobList.php
+	17phpJobDownload.php
+	18phpJobACK.php
+	07phpPostCGQ.php
+	05phpJsonCGQGet.php
+	test01.db
+	12phpJobUploadTest.php
+
+## 文档说明
+
+### 11webUIJob.php
+	描述：此文件不接受参数的输入，仅用来在浏览器界面显示状态，可以检查传感器状态，控制水阀，查看任务队列
+
+### 14phpClearJobList.php
+	API：清除任务队列
+	描述：通过访问这个文件，清除数据库中的任务队列
+
+### 17phpJobDownload.php
+	API：任务下载接口
+	参数：GET(cid)
+	描述：发送参数cid（客户端的标号），从任务队列下载属于该客户端的未完成任务
+	例：http://ip:port/17phpJobDownload.php?cid=1
+
+### 18phpJobACK.php
+	API：任务完成后的上报接口
+	参数：GET(jobid,jobSta)//任务ID，任务状态
+	描述：客户机任务完成后用这个接口更新任务的状态
+	例：http://ip:port/18phpJobACK.php?jobid=1&jobSta=DONE
+
+### 07phpPostCGQ.php
+	API：传感器数据上传接口
+	参数：POST(jsonStr)//jsonStr为个Json字符串
+	描述：这个接口用来上传传感器的状态到服务器
+	例：http://ip:port/07phpPostCGQ.php->POST->jsonStr={"id":1,"wendu":27,"shidu":123,"shuifa":1,"qita":""}
+
+### 05phpJsonCGQGet.php
+	API：下载传感器状态数据
+	描述：返回传感器状态数据
+
+### test01.db
+	数据库
+
+### 12phpJobUploadTest.php
+	API:任务上传接口
+	参数：POST(jsonStr)//jsonStr为个Json字符串
+	描述：接口用来上传控制任务
+	例：http://ip:port/12phpJobUploadTest.php->POST->jsonStr={"clientid":1, "shuifa":1}
+
+## 目前协商的消息格式
+
+### 传感器上传
+```
+jsonStr={"id":1,"wendu":27,"shidu":123,"shuifa":1,"qita":""}
+```
+
+### 传感器下载
+```
+[{"id":1,"wendu":"27","shidu":"123","shuifa":"1","qita":""},
+{"id":2,"wendu":"25","shidu":"95","shuifa":"1","qita":""},
+{"id":3,"wendu":"229","shidu":"203","shuifa":"1","qita":"\u574f\u6389"},
+{"id":4,"wendu":"229","shidu":"23","shuifa":"1","qita":"\u574f\u6389"},
+{"id":5,"wendu":"229","shidu":"23","shuifa":"1","qita":"\u574f\u6389"},
+{"id":6,"wendu":"12","shidu":"23","shuifa":"0","qita":""}]
+```
+
+### 任务上传
+	jsonStr={"clientid":1, "shuifa":1}
+
+### 任务下载
+	[{"jobid":1,"clientid":1,"jobJson":"{\"clientid\":1, \"shuifa\":1}","jobstate":"NEW"}]

@@ -1,0 +1,42 @@
+<!-- 测试用Ajax按钮实现：按下按钮递交一个任务 -->
+
+<html>
+<head>
+<script type="text/javascript">
+function loadXMLDoc(clientid, shuifa)
+{
+var xmlhttp;
+var jsonStr;
+var controData;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+controData={'clientid':clientid, 'shuifa':shuifa};
+jsonStr='jsonStr='+JSON.stringify(controData);
+alert(jsonStr);
+xmlhttp.open("POST","12phpJobUploadTest.php",true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send(jsonStr);
+}
+</script>
+</head>
+<body>
+
+<h2>AJAX</h2>
+<button type="button" onclick="loadXMLDoc('12','0')">Send</button>
+<div id="myDiv"></div>
+ 
+</body>
+</html>
