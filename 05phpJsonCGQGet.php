@@ -3,6 +3,7 @@
 	
 	// PHP SQL JSON TEST
 	// header('content-type:application/json;charset=utf8');
+	header("Access-Control-Allow-Origin: *");
 
 	$DB_NAME	= 'test01.db';
 	$dbObj		= new SQLite3($DB_NAME);
