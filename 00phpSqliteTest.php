@@ -1,6 +1,7 @@
 <?php
 	// 此处为php语言下的SQLite数据库操作测试，后期不会使用SQLite，此处只是为了单机环境下的测试，为了性能还是应该使用MySQL之类的数据库，
 	// 考虑到后面可以使用到的特性（访问控制，存储过程）
+        // kkjkj
 
 	print "hello <br>";
 	$dbname = "test01.db";
