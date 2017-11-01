@@ -7,6 +7,8 @@ import sys
 # 传感器上传接口
 URL 	= 'http://localhost:8092/12phpJobUploadTest.php'
 
+#jkjkjk
+
 
 def POST_JOB(cliid, shuifa):
 	'''python 模拟终端上传控制指令
