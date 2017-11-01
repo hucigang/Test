@@ -1,11 +1,4 @@
-11webUIJob.php
-14phpClearJobList.php
-17phpJobDownload.php
-18phpJobACK.php
-07phpPostCGQ.php
-05phpJsonCGQGet.php
+11webUIJob.php 14phpClearJobList.php 17phpJobDownload.php 18phpJobACK.php 07phpPostCGQ.php 05phpJsonCGQGet.php
 test01.db
 12phpJobUploadTest.php
 index.html
-19historydata.php
-06phpJsonPostTest.php
